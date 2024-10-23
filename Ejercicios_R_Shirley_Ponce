@@ -1,0 +1,216 @@
+1. Clasificación de números positivos, negativos o cero:
+  Este programa lee 10 números y clasifica si son positivos, negativos o cero usando if.
+
+
+
+numeros <- numeric(10)
+
+
+
+cat("Por favor, ingrese los siguientes 10 números uno por uno:\n")
+for (i in 1:10) {
+  cat(paste("Escriba el", i, "número:\n"))
+  num <- as.numeric(readline(prompt = "Ingrese el número: "))
+  numeros[i] <- num  
+}
+
+
+
+for (i in 1:10) {
+  num <- numeros[i]
+  if (num > 0) {
+    cat(num, "es positivo.\n")
+  } else if (num < 0) {
+    cat(num, "es negativo.\n")
+  } else {
+    cat(num, "es cero.\n")
+  }
+}
+
+
+
+
+2. Cálculo de números pares e impares: 
+Genera una lista de 100 números enteros aleatorios. Usa un bucle for para recorrer la lista y una estructura if para contar cuántos son pares y cuántos son impares.
+
+
+set.seed(123)
+pares <- 0
+impares <- 0
+
+for (i in 1:100) {
+  # Generar un número aleatorio entre 1 y 1000
+  numero_entero <- sample(1:1000, 1)
+  cat("Número aleatorio:", numero_entero, "\n")  
+  if (numero_entero %% 2 == 0) {
+    print(paste("El número", numero_entero, "es par."))
+    pares <- pares + 1  # Incrementar contador de pares
+  } else {
+    print(paste("El número", numero_entero, "es impar."))
+    impares <- impares + 1  # Incrementar contador de impares
+  }
+}
+cat("Cantidad total de números pares:", pares, "\n")
+cat("Cantidad total de números impares:", impares, "\n")
+
+
+
+
+
+
+3. Suma de los primeros N números:
+Escribe un programa que pida al usuario un número N e imprima la surna de los números del 1 al N usando un bucle for.
+
+N <- as.numeric(readline(prompt = "Ingrese un número N: "))
+
+
+suma <- 0
+for (i in 1:N) {
+  suma <- suma + i
+}
+cat("La suma de los números del 1 al", N, "es:", suma, "\n")
+
+
+
+
+
+4. Número de Fibonacci:
+  Utiliza un bucle while para generar los primeros 20 números de la secuencia de Fibonacci y mostrar el resultado en pantalla.
+
+
+a <- 0
+b <- 1
+contador <- 1
+cat("Estos son los siguientes números de Fibonacci:\n")
+cat(a, "\n")  
+while (contador < 20) {
+  cat(b, "\n") 
+  siguiente <- a + b  
+  a <- b 
+  b <- siguiente  
+  contador <- contador + 1 
+}
+
+
+
+5. Cálculo de factorial:
+  Escribe un programa que calcule el factorial de un número n introducido por el usuario usando un bucle for. 
+
+
+
+n <- as.numeric(readline(prompt = "Por favor, ingrese un número entero para calcular su factorial: "))
+
+
+factorial <- 1
+for (i in 1:n) {
+  factorial <- factorial * i
+}
+cat("El factorial de", n, "es:", factorial, "\n")
+
+
+
+
+6. Juego de adivinanza:
+  Implementa un juego donde el programa elige un número entre 1 y 100. El usuario debe adivinar el número, y el programa debe dar pistas de si el número Ingresado es "mayor" o "menor que el número secreto utilizando un bucle while y la estructura if.
+  
+
+numero_secreto <- sample(1:100, 1)
+intentos <- 0
+adivinado <- FALSE
+cat("¡Bienvenido al juego de adivinanza!\n")
+cat("He elegido un número entre 1 y 100. ¡Intenta adivinarlo!\n")
+while (!adivinado) {
+  # Pedir al usuario que ingrese su adivinanza
+  intento <- as.numeric(readline(prompt = "Ingrese su adivinanza: "))
+  intentos <- intentos + 1  # Incrementar el contador de intentos
+  if (intento < numero_secreto) {
+    cat("El número es mayor. Intenta nuevamente.\n")
+  } else if (intento > numero_secreto) {
+    cat("El número es menor. Intenta nuevamente.\n")
+  } else {
+    adivinado <- TRUE  # El usuario adivinó el número
+    cat("¡Felicidades! Has adivinado el número en", intentos, "intentos.\n")
+  }
+}
+
+  
+  
+7. Validación de contraseña:
+Crea un sistema de autenticación que pida una contraseña y permita tres intentos antes de bloquear al usuario. Utiliza un bucle while que verifique si la contraseña ingresada es correcta o no.
+
+
+
+contrasena_correcta <- "1489825Shirley"
+intentos <- 0
+autenticado <- FALSE
+
+
+
+
+cat("Bienvenido al sistema de autenticación.\n")
+while (intentos < 3 && !autenticado) {
+  contrasena <- readline(prompt = "Por favor, Ingrese la contraseña: ")
+  intentos <- intentos + 1
+  
+  if (contrasena == contrasena_correcta) {
+    autenticado <- TRUE
+    cat("Bienvenido. Acceso concedido.\n")
+  } else {
+    if (intentos < 3) {
+      cat(paste("Contraseña incorrecta. Te quedan", 3 - intentos, "intentos.\n"))
+    } else {
+      cat("Acceso denegado. Has sido bloqueado. Ha superado el límite de intentos.\n")
+    }
+  }
+}
+
+
+
+8. Suma de dígitos de un número:
+Pide al usuario que ingrese un número entero y utiliza un bucle while para sumar los dígitos del número. Por ejemplo, si el número es 1234, la suma sería 1+2+3+4=10.
+
+
+numero <- as.integer(readline(prompt = "Ingrese un número entero: "))
+
+
+suma <- 0
+while (numero > 0) {
+  digito <- numero %% 10
+  suma <- suma + digito
+  numero <- numero %/% 10
+}
+cat("La suma de los dígitos es:", suma, "\n")
+
+
+
+9. Impresión de patrones:
+Utiliza un bucle for para imprimir un patrón en pantalla, como un triángulo o una pirámide de asteriscos. Por ejemplo: markdown
+
+
+
+filas <- 5
+for (i in 1:filas) {
+  cat(rep("*", i), "\n")
+}
+
+
+
+10. Números primos:
+Escribe un programa que imprima todos los números primas entre 1 y 100. Usa un bude for para iterar por los números y una estructura If para venticar si cada número es primo
+
+
+
+primos <- c()
+for (num in 2:100) {
+  es_primo <- TRUE  
+  for (i in 2:sqrt(num)) {
+    if (num %% i == 0) {
+      es_primo <- FALSE  
+      break 
+    }
+  }
+  if (es_primo) {
+    primos <- c(primos, num)
+  }
+}
+cat("Los números primos del 1 al 100 son:", primos, "\n")
